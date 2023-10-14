@@ -26,6 +26,11 @@ public class PlayerStickController : MonoBehaviour
         // input event 구독 해제
     }
 
+    private void Update()
+    {
+        Debug.DrawLine(startTouchPos, endTouchPos, Color.red);
+    }
+
     private void StartTouchHandle(Vector2 value)
     {
         Debug.Log("touch start");

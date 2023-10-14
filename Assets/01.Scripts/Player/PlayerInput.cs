@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour, IPlayerActions
     public Action<Vector2> startTouchEvent;
     public Action<Vector2> endTouchEvent;
 
-    private Vector2 pos;
+    private Vector3 currentTouchPos;
 
     private void Awake()
     {
@@ -32,20 +32,20 @@ public class PlayerInput : MonoBehaviour, IPlayerActions
     {
         if (context.started)
         {
-            pos = _playerInputAction.Player.TouchPos.ReadValue<Vector2>();
-            pos = Camera.main.ScreenToWorldPoint(pos);
-            startTouchEvent?.Invoke(pos);
+            Debug.Log(currentTouchPos);
+            startTouchEvent?.Invoke(currentTouchPos);
         }
         else if (context.canceled)
         {
-            pos = _playerInputAction.Player.TouchPos.ReadValue<Vector2>();
-            pos = Camera.main.ScreenToWorldPoint(pos);
-            endTouchEvent?.Invoke(pos);
+            Debug.Log(currentTouchPos);
+            endTouchEvent?.Invoke(currentTouchPos);
         }
     }
 
     public void OnTouchPos(InputAction.CallbackContext context)
     {
-        // do nothing
+        currentTouchPos = _playerInputAction.Player.TouchPos.ReadValue<Vector2>();
+        currentTouchPos.z = Camera.main.nearClipPlane;
+        currentTouchPos = Camera.main.ScreenToWorldPoint(currentTouchPos);
     }
 }

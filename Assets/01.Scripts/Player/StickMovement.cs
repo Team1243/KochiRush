@@ -11,9 +11,16 @@ public class StickMovement : MonoBehaviour
     [SerializeField] private float maxDistance; 
     private LayerMask whatIsWall;
 
+    private Vector2 rayDir;
+
     private void Awake()
     {
         whatIsWall = LayerMask.GetMask("Wall");
+    }
+
+    private void Update()
+    {
+        Debug.DrawRay(transform.localPosition, rayDir, Color.red);
     }
 
     public void MoveToTargetPosAndRotation(Vector2 dir)
@@ -21,6 +28,8 @@ public class StickMovement : MonoBehaviour
         if (isMoving) return;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.localPosition, dir, maxDistance, whatIsWall);
+        rayDir = dir;
+
         if (hit)
         {
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
