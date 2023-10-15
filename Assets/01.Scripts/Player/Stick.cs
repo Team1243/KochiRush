@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Stick : MonoBehaviour
 {
-    public List<CircleObj> circleList;
+    private List<CircleObj> circleList;
+    public List<CircleObj> CircleList => circleList;
 
     public void SetFruitList()
     {
