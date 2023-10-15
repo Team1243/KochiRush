@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c876601b925742945afa1c76576642e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnMinCool: 1
-  _spawnMaxCool: 2
-  _minSpawnIndex: 3
-  _maxSpawnIndex: 8
+  _spawnMinCool: 1.5
+  _spawnMaxCool: 2.5
+  _minSpawnIndex: 5
+  _maxSpawnIndex: 7
 --- !u!4 &131152759
 Transform:
   m_ObjectHideFlags: 0
