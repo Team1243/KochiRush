@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System;   
 
 public class StickMovement : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class StickMovement : MonoBehaviour
 
     private Vector2 rayDir;
 
+    // event
+    public Action moveFinishEvent;
+
     private void Awake()
     {
         whatIsWall = LayerMask.GetMask("Wall");
@@ -20,7 +24,7 @@ public class StickMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(transform.localPosition, rayDir, Color.red);
+        Debug.DrawRay(transform.localPosition, rayDir, Color.red); // for debug
     }
 
     public void MoveToTargetPosAndRotation(Vector2 dir)
@@ -28,7 +32,7 @@ public class StickMovement : MonoBehaviour
         if (isMoving) return;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.localPosition, dir, maxDistance, whatIsWall);
-        rayDir = dir;
+        rayDir = dir; // for debug
 
         if (hit)
         {
@@ -65,5 +69,6 @@ public class StickMovement : MonoBehaviour
         }
 
         isMoving = false;
+        moveFinishEvent?.Invoke();
     }
 }

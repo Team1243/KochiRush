@@ -4,6 +4,7 @@ public class PlayerStickController : MonoBehaviour
 {
     private PlayerInput _playerInput;
     private StickMovement _stickMovement;
+    // private StickCollision _stickCollision;
 
     // swipe
     private Vector2 startTouchPos;
@@ -13,6 +14,7 @@ public class PlayerStickController : MonoBehaviour
     {
         _playerInput = GetComponent<PlayerInput>();
         _stickMovement = transform.GetChild(0).GetComponent<StickMovement>();
+        // _stickCollision = transform.GetChild(0).GetComponent<StickCollision>(); 
     }
 
     private void Start()
