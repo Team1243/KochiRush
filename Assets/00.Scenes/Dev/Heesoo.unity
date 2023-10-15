@@ -395,6 +395,34 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4198969500222836538, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198969500222836538, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198969500222836538, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198969500222836538, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198969500222836538, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198969500222836538, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198969500222836538, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5455765067956586472, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
       propertyPath: moveSpeed
       value: 0.5
@@ -402,6 +430,22 @@ PrefabInstance:
     - target: {fileID: 5667371555233526055, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288777496765401413, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288777496765401413, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288777496765401413, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288777496765401413, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8802928903734346405, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -496,7 +540,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.350235}
+  m_Offset: {x: 0, y: 0.0061216354}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -507,7 +551,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 7.5478745}
+  m_Size: {x: 1, y: 6.835161}
   m_EdgeRadius: 0
 --- !u!4 &863033755 stripped
 Transform:
@@ -532,7 +576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1450355281
 AudioListener:
   m_ObjectHideFlags: 0
