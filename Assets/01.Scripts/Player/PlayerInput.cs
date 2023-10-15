@@ -32,12 +32,12 @@ public class PlayerInput : MonoBehaviour, IPlayerActions
     {
         if (context.started)
         {
-            Debug.Log(currentTouchPos);
+            // Debug.Log(currentTouchPos);
             startTouchEvent?.Invoke(currentTouchPos);
         }
         else if (context.canceled)
         {
-            Debug.Log(currentTouchPos);
+            // Debug.Log(currentTouchPos);
             endTouchEvent?.Invoke(currentTouchPos);
         }
     }
