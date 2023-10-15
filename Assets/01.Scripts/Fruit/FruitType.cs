@@ -6,5 +6,6 @@ public enum FruitType
 {
     Strawberry = 0,
     GreenGrape = 1,
-    Grape = 2
+    Grape = 2,
+    Mandarin = 3
 }

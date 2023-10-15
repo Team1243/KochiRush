@@ -31,19 +31,22 @@ public class Fruit : PoolableMono
 
     public override void Init()
     {
+        _rigidbody.gravityScale = 1;
         transform.position = new Vector3(Random.Range(_spawnMinX, _spawnMaxX), -7.5f, 0);
 
-        Type = (FruitType)Random.Range(0, Enum.GetValues(typeof(FruitType)).Length);
+        Type = (FruitType)Random.Range(0, Enum.GetValues(typeof(FruitType)).Length - 1);
         _spriteRenderer.sprite = _sprites[(int)Type];
         
         _addForce.x = Random.Range(_addForceMin.x, _addForceMax.x);
         _addForce.y = Random.Range(_addForceMin.y, _addForceMax.y);
-        print(transform.localPosition);
         if (transform.position.x > 0)
-        {
             _addForce.x *= -1;
-            print(1);
-        }
         _rigidbody.AddForce(_addForce);
+    }
+
+    public void FruitStop()
+    {
+        _rigidbody.gravityScale = 0;
+        _rigidbody.velocity = Vector2.zero;
     }
 }
