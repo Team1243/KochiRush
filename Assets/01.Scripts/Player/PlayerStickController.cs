@@ -11,6 +11,7 @@ public class PlayerStickController : MonoBehaviour
     private Vector2 endTouchPos;
 
     private bool isReady = true;
+    public bool IsReady => isReady;
 
     private void Awake()
     {
@@ -43,14 +44,22 @@ public class PlayerStickController : MonoBehaviour
 
     private void StartTouchHandle(Vector2 value)
     {
-        if (!isReady) return;
+        if (!isReady)
+        {
+            Debug.Log("is not ready");
+            return;
+        }
 
         startTouchPos = value;
     }
 
     private void EndTouchHandle(Vector2 value)
     {
-        if (!isReady) return;
+        if (!isReady)
+        {
+            Debug.Log("is not ready");
+            return;
+        }
 
         endTouchPos = value;
         TryStickShoot();
