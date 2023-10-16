@@ -32,11 +32,11 @@ public class Stick : MonoBehaviour
         Vector3 pos = Vector3.zero;
         Vector3 dir = fruitBasketTr.up;
 
-        bool isRockExist = false;
+        bool isGameOver = false;
 
         if (fruitList.Count == 0)
         {
-            Debug.Log("stick fruits is null");
+            isGameOver = true;     
         }
         else
         {
@@ -47,7 +47,7 @@ public class Stick : MonoBehaviour
                 // µ¹ÀÌ ²¿Ä¡¿¡ ²ÈÇûÀ» ¶§
                 if (fruit.Type == FruitType.Rock)
                 {
-                    isRockExist = true; 
+                    isGameOver = true; 
                 }
 
                 fruit.FruitStop();
@@ -83,14 +83,14 @@ public class Stick : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         showStickDoneEvent?.Invoke(); // ½ºÆ½ ´Ù½Ã ÁØºñ»óÅÂ
-        RemoveFruitList();
 
-        if (isRockExist)
+        if (isGameOver)
         {
-            Debug.Log("Game Over");
             UIManager.Instance.GameEnd();
         }
         _inGameUI.Score += fruitList.Count * 5;
+        
+        RemoveFruitList();
     }
 
     public void RemoveFruitList()

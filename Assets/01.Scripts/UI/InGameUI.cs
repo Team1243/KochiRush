@@ -13,11 +13,16 @@ public class InGameUI : MonoBehaviour
     private int _score;
     public int Score
     {
-        get => _score;
+        get
+        {
+            _scoreLabel.text = _score.ToString();
+            return _score;
+        }
         set
         {
             _score = value;
             _scoreLabel.text = _score.ToString();
+            print(_score.ToString());
         }
     }
 
