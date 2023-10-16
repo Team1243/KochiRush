@@ -59,23 +59,24 @@ public class Fruit : PoolableMono
         _rigidbody.velocity = Vector2.zero;
     }
 
-    public void Fade(float value, float time)
+    public void Fade(Color color, float time)
     {
         StopAllCoroutines();
-        StartCoroutine(FadeCo(value, time));
+        StartCoroutine(FadeCo(color, time));
     }
 
-    private IEnumerator FadeCo(float value, float time)
+    private IEnumerator FadeCo(Color color, float time)
     {
         float currentTime = 0;
-        float startValue = _spriteRenderer.color.a;
+        Color startColor = _spriteRenderer.color;
         while (currentTime < time)
         {
             yield return null;
             currentTime += Time.deltaTime;
             Mathf.Clamp(currentTime, 0, time);
             float t = currentTime / time;
-            _spriteRenderer.color = new Color(255, 255, 255, Mathf.Lerp(startValue, value, t));
+            _spriteRenderer.color = Color.Lerp(startColor, color, t);
+            
         }
     }
 }

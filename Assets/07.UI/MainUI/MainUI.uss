@@ -13,4 +13,8 @@
     border-bottom-left-radius: 125px;
     border-top-right-radius: 125px;
     border-bottom-right-radius: 125px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
 }

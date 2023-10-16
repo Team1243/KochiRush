@@ -29,7 +29,6 @@ public class FruitManager : MonoBehaviour
     private void Start()
     {
         _stickMovement.moveStartEvent += () => gameObject.SetActive(false);
-        _stickMovement.moveFinishEvent += FruitPush;
 
         _stick.showStickDoneEvent += () => gameObject.SetActive(true);
     }
@@ -51,18 +50,6 @@ public class FruitManager : MonoBehaviour
             {
                 PoolManager.Instance.Pop("Fruit");
             }
-        }
-    }
-
-    public void FruitPush()
-    {
-        Fruit[] fruits;
-        fruits = FindObjectsOfType<Fruit>();
-
-        foreach (var fruit in fruits)
-        {
-            if (!fruit.IsCrash)
-                PoolManager.Instance.Push(fruit);
         }
     }
 }
