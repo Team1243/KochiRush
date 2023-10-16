@@ -62,10 +62,10 @@ public class Fruit : PoolableMono
     public void Fade(Color color, float time)
     {
         StopAllCoroutines();
-        StartCoroutine(FadeCo(color, time));
+        StartCoroutine(FadeAndDestroy(color, time));
     }
 
-    private IEnumerator FadeCo(Color color, float time)
+    private IEnumerator FadeAndDestroy(Color color, float time)
     {
         float currentTime = 0;
         Color startColor = _spriteRenderer.color;
@@ -76,7 +76,11 @@ public class Fruit : PoolableMono
             Mathf.Clamp(currentTime, 0, time);
             float t = currentTime / time;
             _spriteRenderer.color = Color.Lerp(startColor, color, t);
-            
         }
+
+        _spriteRenderer.color = color;
+
+        PoolManager.Instance.Push(this);
+        this.transform.parent = GameManager.Instance.transform;
     }
 }

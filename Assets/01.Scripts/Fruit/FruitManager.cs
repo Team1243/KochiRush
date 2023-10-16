@@ -29,7 +29,6 @@ public class FruitManager : MonoBehaviour
     private void Start()
     {
         _stickMovement.moveStartEvent += () => gameObject.SetActive(false);
-
         _stick.showStickDoneEvent += () => gameObject.SetActive(true);
     }
 
