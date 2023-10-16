@@ -98,9 +98,6 @@ public class StickMovement : MonoBehaviour
 
     private void ResetPos()
     {
-        // transform.localPosition = initPos.transform.position;
-        // transform.localRotation = initPos.transform.rotation;
-
         if (!isMoving)
         {
             StartCoroutine(MoveAndRotation(initPos.transform.position, initPos.transform.rotation, 1f, isReset: true));
