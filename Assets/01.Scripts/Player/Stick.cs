@@ -58,7 +58,7 @@ public class Stick : MonoBehaviour
                     }
                 }
 
-                yield return new WaitForSeconds(0.03f);
+                yield return new WaitForSeconds(0.05f);
             }
         }
 

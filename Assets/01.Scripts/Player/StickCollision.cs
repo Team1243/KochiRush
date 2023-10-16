@@ -14,6 +14,8 @@ public class StickCollision : MonoBehaviour
 
     private List<Fruit> fruitListTemp = new List<Fruit>(5);
 
+    [SerializeField] private AudioClip _fruitClip;
+
     private void Awake()
     {
         _stickMovement = GetComponent<StickMovement>();
@@ -59,6 +61,10 @@ public class StickCollision : MonoBehaviour
                     {
                         fruitListTemp.Add(fruit);
                         fruit.IsCrash = true;
+
+                        // 여기서 과일 꽂히는 사운드 재생
+                        // AudioObj audioObj = PoolManager.Instance.Pop("AudioObj") as AudioObj;
+                        // audioObj.PlayClipwithVariablePitch(_fruitClip);
                     }
                 }
             }

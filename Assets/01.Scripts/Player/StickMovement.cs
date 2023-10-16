@@ -23,6 +23,9 @@ public class StickMovement : MonoBehaviour
     // reset pos
     [SerializeField] private Transform initPos;
 
+    // sound
+    [SerializeField] private AudioClip _shootClip = null;
+
     private void Awake()
     {
         whatIsWall = LayerMask.GetMask("Wall");
@@ -62,6 +65,10 @@ public class StickMovement : MonoBehaviour
         {
             moveStartEvent?.Invoke(); // 과일 발사 중지 메서드 실행
         }
+
+        // 발사 audio 실행
+        AudioObj audioObj = PoolManager.Instance.Pop("AudioObj") as AudioObj;
+        audioObj.PlayClip(_shootClip);
 
         float time = 0;
         float value = 0;
