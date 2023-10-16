@@ -34,6 +34,7 @@ public class Fruit : PoolableMono
     {
         IsCrash = false;
         _rigidbody.gravityScale = 1;
+        _spriteRenderer.color = Color.white;
         transform.position = new Vector3(Random.Range(_spawnMinX, _spawnMaxX), -7.5f, 0);
 
         Type = (FruitType)Random.Range(0, Enum.GetValues(typeof(FruitType)).Length - 1);
@@ -56,5 +57,25 @@ public class Fruit : PoolableMono
     {
         _rigidbody.gravityScale = 0;
         _rigidbody.velocity = Vector2.zero;
+    }
+
+    public void Fade(float value, float time)
+    {
+        StopAllCoroutines();
+        StartCoroutine(FadeCo(value, time));
+    }
+
+    private IEnumerator FadeCo(float value, float time)
+    {
+        float currentTime = 0;
+        float startValue = _spriteRenderer.color.a;
+        while (currentTime < time)
+        {
+            yield return null;
+            currentTime += Time.deltaTime;
+            Mathf.Clamp(currentTime, 0, time);
+            float t = currentTime / time;
+            _spriteRenderer.color = new Color(255, 255, 255, Mathf.Lerp(startValue, value, t));
+        }
     }
 }
