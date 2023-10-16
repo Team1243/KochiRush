@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class Fruit : PoolableMono
 {
     [HideInInspector] public FruitType Type;
+    [HideInInspector] public bool IsCrash = false;
     
     [Header("Force")]
     [SerializeField] private Vector2 _addForceMin;
@@ -31,6 +32,7 @@ public class Fruit : PoolableMono
 
     public override void Init()
     {
+        IsCrash = false;
         _rigidbody.gravityScale = 1;
         transform.position = new Vector3(Random.Range(_spawnMinX, _spawnMaxX), -7.5f, 0);
 
