@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private UnityEvent _gameStart;
     [SerializeField] private UnityEvent _gameEnd;
+    [SerializeField] private UnityEvent _gameRestart;
     
     [HideInInspector] public bool IsShow = true;
      
@@ -29,6 +30,12 @@ public class UIManager : MonoBehaviour
     public void GameEnd()
     {
         _gameEnd.Invoke();
+        IsShow = true;
+    }
+    
+    public void GameReStart()
+    {
+        _gameRestart.Invoke();
         IsShow = true;
     }
 }
