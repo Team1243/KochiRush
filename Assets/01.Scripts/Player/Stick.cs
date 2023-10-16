@@ -30,6 +30,8 @@ public class Stick : MonoBehaviour
         Vector3 pos = Vector3.zero;
         Vector3 dir = fruitBasketTr.up;
 
+        bool isRockExist = false;
+
         if (fruitList.Count == 0)
         {
             Debug.Log("stick fruits is null");
@@ -39,6 +41,13 @@ public class Stick : MonoBehaviour
             for (int i = 1; i <= fruitList.Count; i++)
             {
                 fruit = fruitList[i - 1];
+
+                // µ¹ÀÌ ²¿Ä¡¿¡ ²ÈÇûÀ» ¶§
+                if (fruit.Type == FruitType.Rock)
+                {
+                    isRockExist = true; 
+                }
+
                 fruit.FruitStop();
                 fruit.transform.parent = fruitBasketTr.transform;
                 fruit.transform.localPosition = pos;
@@ -73,6 +82,11 @@ public class Stick : MonoBehaviour
 
         showStickDoneEvent?.Invoke(); // ½ºÆ½ ´Ù½Ã ÁØºñ»óÅÂ
         RemoveFruitList();
+
+        if (isRockExist)
+        {
+            Debug.Log("Game Over");
+        }
     }
 
     public void RemoveFruitList()
