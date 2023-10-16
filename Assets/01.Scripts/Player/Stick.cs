@@ -63,11 +63,11 @@ public class Stick : MonoBehaviour
         }
 
         // 점수 체크 딜레이 전에 넣어주기
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         Debug.Log("Score check done" + " " + 5 * fruitList.Count);
 
-        showStickDoneEvent?.Invoke(); // 스틱 다시 준비상태
         yield return new WaitForSeconds(1f);
+        showStickDoneEvent?.Invoke(); // 스틱 다시 준비상태
         RemoveFruitList();
     }
 
