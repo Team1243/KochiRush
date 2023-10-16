@@ -46,6 +46,12 @@ public class Fruit : PoolableMono
         _rigidbody.AddForce(_addForce);
     }
 
+    private void FixedUpdate()
+    {
+        if (transform.position.y < -15f)
+            PoolManager.Instance.Push(this);
+    }
+
     public void FruitStop()
     {
         _rigidbody.gravityScale = 0;

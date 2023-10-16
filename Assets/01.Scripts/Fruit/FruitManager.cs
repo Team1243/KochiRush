@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,7 +14,7 @@ public class FruitManager : MonoBehaviour
     [SerializeField] private int _maxSpawnIndex;
     private int _index;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(SpawnCo());
     }

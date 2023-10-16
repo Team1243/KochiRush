@@ -4,8 +4,11 @@ using UnityEngine;
 
 public enum FruitType 
 {
-    Strawberry = 0,
-    GreenGrape = 1,
-    Grape = 2,
-    Mandarin = 3
+    Grape = 0, 
+    Kiwifruit = 1, 
+    Mandarin = 2, 
+    Pineapple = 3, 
+    ShineMusket = 4, 
+    Strawberry = 5,
+    Rock = 6
 }

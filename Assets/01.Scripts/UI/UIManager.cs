@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [SerializeField] private List<GameObject> _uiObjects;
+    [SerializeField] private UnityEvent _gameStart;
+    [SerializeField] private UnityEvent _gameEnd;
     
     [HideInInspector] public bool IsShow = false;
      
@@ -18,8 +20,13 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
-    public void UIShow(UIType type, bool value)
+    public void GameStart()
     {
-        _uiObjects[(int)type].SetActive(value);
+        _gameStart.Invoke();
+    }
+    
+    public void GameEnd()
+    {
+        _gameEnd.Invoke();
     }
 }
