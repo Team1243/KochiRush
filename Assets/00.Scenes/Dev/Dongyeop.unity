@@ -910,9 +910,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnMinCool: 1.5
-  _spawnMaxCool: 2.5
+  _spawnMaxCool: 2
   _minSpawnIndex: 5
-  _maxSpawnIndex: 7
+  _maxSpawnIndex: 8
   stick: {fileID: 818515012}
 --- !u!4 &1315675238
 Transform:
