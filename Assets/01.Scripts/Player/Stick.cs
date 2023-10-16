@@ -77,6 +77,7 @@ public class Stick : MonoBehaviour
         
         fruitList.ForEach(f =>
         {
+            f.Fade(0, 0.5f);
             PoolManager.Instance.Push(f);
             f.transform.parent = GameManager.Instance.transform;
         });
