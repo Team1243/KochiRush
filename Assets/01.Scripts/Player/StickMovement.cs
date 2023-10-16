@@ -54,10 +54,14 @@ public class StickMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveAndRotation(Vector2 targetPos, Quaternion targetRot, float speed)
+    private IEnumerator MoveAndRotation(Vector2 targetPos, Quaternion targetRot, float speed, bool isReset = false)
     {
         isMoving = true;
-        moveStartEvent?.Invoke(); // 과일 발사 중지 메서드 실행
+
+        if (!isReset)
+        {
+            moveStartEvent?.Invoke(); // 과일 발사 중지 메서드 실행
+        }
 
         float time = 0;
         float value = 0;
@@ -81,7 +85,11 @@ public class StickMovement : MonoBehaviour
         }
 
         isMoving = false;
-        moveFinishEvent?.Invoke();
+
+        if (!isReset)
+        {
+            moveFinishEvent?.Invoke();
+        }
     }
 
     #endregion
@@ -90,8 +98,13 @@ public class StickMovement : MonoBehaviour
 
     private void ResetPos()
     {
-        transform.localPosition = initPos.transform.position;
-        transform.localRotation = initPos.transform.rotation;
+        // transform.localPosition = initPos.transform.position;
+        // transform.localRotation = initPos.transform.rotation;
+
+        if (!isMoving)
+        {
+            StartCoroutine(MoveAndRotation(initPos.transform.position, initPos.transform.rotation, 1f, isReset: true));
+        }
     }
 
     #endregion

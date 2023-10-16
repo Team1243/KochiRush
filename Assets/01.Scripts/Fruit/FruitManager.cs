@@ -15,6 +15,23 @@ public class FruitManager : MonoBehaviour
     [SerializeField] private int _maxSpawnIndex;
     private int _index;
 
+    [Header("StickCompo")]
+    [SerializeField] private GameObject stick;
+    private StickMovement _stickMovement;
+    private Stick _stick;
+
+    private void Awake()
+    {
+        _stickMovement = stick.GetComponent<StickMovement>();
+        _stick = stick.GetComponent<Stick>();
+    }
+
+    private void Start()
+    {
+        _stickMovement.moveStartEvent += () => gameObject.SetActive(false);
+        _stick.showStickDoneEvent += () => gameObject.SetActive(true);
+    }
+
     private void OnEnable()
     {
         StartCoroutine(SpawnCo());

@@ -53,12 +53,12 @@ public class StickCollision : MonoBehaviour
             
             foreach (var hit in hits)
             {
-                if (hit.transform.TryGetComponent(out Fruit fruit) && !fruit.isCollision)
+                if (hit.transform.TryGetComponent(out Fruit fruit) && !fruit.IsCrash)
                 {
                     if (fruitListTemp.Count < fruitListTemp.Capacity)
                     {
                         fruitListTemp.Add(fruit);
-                        fruit.isCollision = true;
+                        fruit.IsCrash = true;
                     }
                 }
             }
