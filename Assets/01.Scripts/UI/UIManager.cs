@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UnityEvent _gameStart;
     [SerializeField] private UnityEvent _gameEnd;
     
-    [HideInInspector] public bool IsShow = false;
+    [HideInInspector] public bool IsShow = true;
      
     private void Awake()
     {
@@ -23,10 +23,12 @@ public class UIManager : MonoBehaviour
     public void GameStart()
     {
         _gameStart.Invoke();
+        IsShow = false;
     }
     
     public void GameEnd()
     {
         _gameEnd.Invoke();
+        IsShow = true;
     }
 }

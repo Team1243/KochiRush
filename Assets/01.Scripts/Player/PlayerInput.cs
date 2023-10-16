@@ -23,8 +23,8 @@ public class PlayerInput : MonoBehaviour, IPlayerActions
         {
             DontDestroyOnLoad(this);
         }
-
-        ActivateInput();
+        
+        DeActivateInput();
     }
 
     public void ActivateInput()

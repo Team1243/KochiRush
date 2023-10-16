@@ -1,5 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-self: center;">
-        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" style="font-size: 125px; -unity-text-align: middle-center; -unity-font-definition: url(&apos;project://database/Assets/99.Others/Font/ONE%20Mobile%20Title%20SDF.asset?fileID=11400000&amp;guid=8c954b41e54224e4ebf7c5829d4d1b63&amp;type=2#ONE Mobile Title SDF&apos;); margin-top: 100px;" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-self: center; align-items: center; justify-content: center;">
+        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" picking-mode="Ignore" style="font-size: 275%; -unity-text-align: middle-center; -unity-font-definition: url(&apos;project://database/Assets/99.Others/Font/ONE%20Mobile%20Title%20SDF.asset?fileID=11400000&amp;guid=8c954b41e54224e4ebf7c5829d4d1b63&amp;type=2#ONE Mobile Title SDF&apos;); margin-top: 100px; color: rgb(0, 0, 0);" />
     </ui:VisualElement>
 </ui:UXML>
