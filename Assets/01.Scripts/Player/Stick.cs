@@ -13,6 +13,8 @@ public class Stick : MonoBehaviour
 
     [SerializeField] private AudioClip _fruitClip;
 
+    [SerializeField] private InGameUI _inGameUI;
+
     private void Awake()
     {
         fruitBasketTr = transform.GetChild(1).GetComponent<Transform>();
@@ -86,7 +88,9 @@ public class Stick : MonoBehaviour
         if (isRockExist)
         {
             Debug.Log("Game Over");
+            UIManager.Instance.GameEnd();
         }
+        _inGameUI.Score += fruitList.Count * 5;
     }
 
     public void RemoveFruitList()
