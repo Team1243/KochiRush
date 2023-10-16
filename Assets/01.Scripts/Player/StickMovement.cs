@@ -4,6 +4,8 @@ using System;
 
 public class StickMovement : MonoBehaviour
 {
+    private Stick _stick;
+
     // movement
     [SerializeField] private float moveSpeed;
     private bool isMoving = false;
@@ -15,17 +17,26 @@ public class StickMovement : MonoBehaviour
     private Vector2 rayDir;
 
     // event
+    public Action moveStartEvent;
     public Action moveFinishEvent;
+
+    // reset pos
+    [SerializeField] private Transform initPos;
 
     private void Awake()
     {
         whatIsWall = LayerMask.GetMask("Wall");
+        _stick = GetComponent<Stick>();
+
+        _stick.showStickDoneEvent += ResetPos;
     }
 
     private void Update()
     {
         Debug.DrawRay(transform.localPosition, rayDir, Color.red); // for debug
     }
+
+    #region StickMove
 
     public void MoveToTargetPosAndRotation(Vector2 dir)
     {
@@ -46,6 +57,7 @@ public class StickMovement : MonoBehaviour
     private IEnumerator MoveAndRotation(Vector2 targetPos, Quaternion targetRot, float speed)
     {
         isMoving = true;
+        moveStartEvent?.Invoke(); // 과일 발사 중지 메서드 실행
 
         float time = 0;
         float value = 0;
@@ -71,4 +83,16 @@ public class StickMovement : MonoBehaviour
         isMoving = false;
         moveFinishEvent?.Invoke();
     }
+
+    #endregion
+
+    #region ResetPos
+
+    private void ResetPos()
+    {
+        transform.localPosition = initPos.transform.position;
+        transform.localRotation = initPos.transform.rotation;
+    }
+
+    #endregion
 }

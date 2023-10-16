@@ -23,8 +23,18 @@ public class PlayerInput : MonoBehaviour, IPlayerActions
         {
             DontDestroyOnLoad(this);
         }
-        
+
+        ActivateInput();
+    }
+
+    public void ActivateInput()
+    {
         _playerInputAction.Player.Enable();
+    }
+
+    public void DeActivateInput()
+    {
+        _playerInputAction.Player.Disable();
     }
 
     // 터치시 포지션을 스크린 좌표에서 월드 좌표로 변환하여 보내줌

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class StickCollision : MonoBehaviour
@@ -26,29 +27,42 @@ public class StickCollision : MonoBehaviour
 
     private void Start()
     {
-        _stickMovement.moveFinishEvent += CheckCollisionObj;
+        _stickMovement.moveStartEvent += ActivateRay;
+        _stickMovement.moveFinishEvent += DeactivateRay;
     }
 
-    private void CheckCollisionObj()
+    private void ActivateRay()
     {
-        Debug.Log("check collision start");
+        StartCoroutine(CheckCollisionObj());
+    }
 
+    private  void DeactivateRay()
+    {
+        StopCoroutine(CheckCollisionObj());
+        _stick.SetFruitList(fruitListTemp);
+    }
+
+    private IEnumerator CheckCollisionObj()
+    {
         RaycastHit2D[] hits;
-        hits = Physics2D.BoxCastAll(fruitBasketTr.position, fruitBasketCol.size, 0f, fruitBasketTr.up, 0f, whatIsFruit);
-
         fruitListTemp.Clear();
-        foreach (var hit in hits)
+
+        while (true)
         {
-            if (hit.transform.TryGetComponent(out Fruit fruit))
+            hits = Physics2D.BoxCastAll(transform.position, fruitBasketCol.size, 0f, fruitBasketTr.up, 0f, whatIsFruit);
+            
+            foreach (var hit in hits)
             {
-                if (fruitListTemp.Count < fruitListTemp.Capacity)
+                if (hit.transform.TryGetComponent(out Fruit fruit) && !fruit.isCollision)
                 {
-                    fruitListTemp.Add(fruit);
+                    if (fruitListTemp.Count < fruitListTemp.Capacity)
+                    {
+                        fruitListTemp.Add(fruit);
+                        fruit.isCollision = true;
+                    }
                 }
             }
+            yield return new WaitForEndOfFrame();
         }
-        _stick.SetFruitList(fruitListTemp);
-
-        Debug.Log("check collision end");
     }
 }
