@@ -4,28 +4,36 @@ public class PlayerStickController : MonoBehaviour
 {
     private PlayerInput _playerInput;
     private StickMovement _stickMovement;
-    // private StickCollision _stickCollision;
+    private Stick _stick;
 
     // swipe
     private Vector2 startTouchPos;
     private Vector2 endTouchPos;
 
+    private bool isReady = true;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         _stickMovement = transform.GetChild(0).GetComponent<StickMovement>();
-        // _stickCollision = transform.GetChild(0).GetComponent<StickCollision>(); 
+        _stick = transform.GetChild(0).GetComponent<Stick>();
     }
 
     private void Start()
     {
         _playerInput.startTouchEvent += StartTouchHandle;
         _playerInput.endTouchEvent += EndTouchHandle;
+
+        _stickMovement.moveStartEvent += () => isReady = false;
+        _stick.showStickDoneEvent += () => isReady = true;
+
+        isReady = true;
     }
 
     private void OnDestroy()
     {
-        // input event 구독 해제
+        _playerInput.startTouchEvent -= StartTouchHandle;
+        _playerInput.endTouchEvent -= EndTouchHandle;
     }
 
     private void Update()
@@ -35,15 +43,16 @@ public class PlayerStickController : MonoBehaviour
 
     private void StartTouchHandle(Vector2 value)
     {
-        Debug.Log("touch start");
+        if (!isReady) return;
+
         startTouchPos = value;
     }
 
     private void EndTouchHandle(Vector2 value)
     {
-        Debug.Log("touch end");
+        if (!isReady) return;
+
         endTouchPos = value;
-        
         TryStickShoot();
     }
 
