@@ -11,6 +11,8 @@ public class Stick : MonoBehaviour
 
     public Action showStickDoneEvent;
 
+    [SerializeField] private AudioClip _fruitClip;
+
     private void Awake()
     {
         fruitBasketTr = transform.GetChild(1).GetComponent<Transform>();
@@ -42,6 +44,10 @@ public class Stick : MonoBehaviour
                 fruit.transform.localPosition = pos;
                 fruit.transform.localRotation = Quaternion.Euler(dir);
 
+                // 여기서 과일 꽂히는 사운드 재생
+                AudioObj audioObj = PoolManager.Instance.Pop("AudioObj") as AudioObj;
+                audioObj.PlayClip(_fruitClip);
+
                 // 짝수일 때
                 if (i % 2 == 0)
                 {
@@ -58,7 +64,7 @@ public class Stick : MonoBehaviour
                     }
                 }
 
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
 

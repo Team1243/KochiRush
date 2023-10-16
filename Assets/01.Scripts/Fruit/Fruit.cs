@@ -65,6 +65,7 @@ public class Fruit : PoolableMono
     {
         _rigidbody.gravityScale = 0;
         _rigidbody.velocity = Vector2.zero;
+        ParticlePlay();
     }
 
     public void Fade(Color color, float time)

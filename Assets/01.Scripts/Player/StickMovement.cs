@@ -64,11 +64,10 @@ public class StickMovement : MonoBehaviour
         if (!isReset)
         {
             moveStartEvent?.Invoke(); // 과일 발사 중지 메서드 실행
+                                      // 발사 audio 실행
+            AudioObj audioObj = PoolManager.Instance.Pop("AudioObj") as AudioObj;
+            audioObj.PlayClip(_shootClip);
         }
-
-        // 발사 audio 실행
-        AudioObj audioObj = PoolManager.Instance.Pop("AudioObj") as AudioObj;
-        audioObj.PlayClip(_shootClip);
 
         float time = 0;
         float value = 0;
