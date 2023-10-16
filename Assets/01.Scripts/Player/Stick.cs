@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using System;
 
 public class Stick : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Stick : MonoBehaviour
 
     private Transform fruitBasketTr;
 
-    private Vector3 startPos;
+    public Action showStickDoneEvent;
 
     private void Awake()
     {
@@ -23,34 +24,62 @@ public class Stick : MonoBehaviour
 
     private IEnumerator ShowStick()
     {
-        // startPos = fruitBasketTr.position;
-        Vector3 pos = fruitBasketTr.position;
-        for (int i = 0; i < fruitList.Count; i++)
+        Fruit fruit;
+        Vector3 pos = Vector3.zero;
+        Vector3 dir = fruitBasketTr.up;
+
+        if (fruitList.Count == 0)
         {
-            fruitList[i].transform.position = pos;
-
-            // 짝수일 때
-            if (i % 2 == 0)
-            {
-                for (int j = 0; j < i; j++)
-                {
-                    pos += Vector3.one;
-                }
-            }
-            else
-            {
-                for (int j = 0; j < i; j++)
-                {
-                    pos -= Vector3.one;
-                }
-            }
-
-            yield return new WaitForEndOfFrame();
+            Debug.Log("stick fruits is null");
         }
+        else
+        {
+            for (int i = 1; i <= fruitList.Count; i++)
+            {
+                fruit = fruitList[i - 1];
+                fruit.FruitStop();
+                fruit.transform.parent = fruitBasketTr.transform;
+                fruit.transform.localPosition = pos;
+                fruit.transform.localRotation = Quaternion.Euler(dir);
+
+                // 짝수일 때
+                if (i % 2 == 0)
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        pos.y += 1;
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        pos.y -= 1;
+                    }
+                }
+
+                yield return new WaitForSeconds(0.03f);
+            }
+        }
+
+        // 점수 체크 딜레이 전에 넣어주기
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("Score check done" + " " + 5 * fruitList.Count);
+
+        RemoveFruitList();
+        showStickDoneEvent?.Invoke(); // 스틱 다시 준비상태
     }
 
     public void RemoveFruitList()
     {
+        if (fruitList.Count == 0) return;
+        
+        fruitList.ForEach(f =>
+        {
+            PoolManager.Instance.Push(f);
+            f.transform.parent = GameManager.Instance.transform;
+        });
+
         fruitList.Clear();
     }
 }
