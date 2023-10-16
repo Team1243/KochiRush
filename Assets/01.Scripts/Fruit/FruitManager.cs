@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -29,8 +30,20 @@ public class FruitManager : MonoBehaviour
 
             for (int i = 0; i < _index; ++i)
             {
-                PoolableMono fruit = PoolManager.Instance.Pop("Fruit");
+                PoolManager.Instance.Pop("Fruit");
             }
+        }
+    }
+
+    public void FruitPush()
+    {
+        Fruit[] fruits;
+        fruits = FindObjectsOfType<Fruit>();
+
+        foreach (var fruit in fruits)
+        {
+            if (!fruit.IsCrash)
+                PoolManager.Instance.Push(fruit);
         }
     }
 }

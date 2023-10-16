@@ -21,9 +21,9 @@ public class TitleUI : MonoBehaviour
         _soundButton = _rootElement.Q<Button>("SoundButton");
         _exitButton = _rootElement.Q<Button>("ExitButton");
         
-        _startButton.RegisterCallback<ClickEvent>(e => UIManager.Instance.GameStart());
-        _soundButton.RegisterCallback<ClickEvent>(e => { SoundBtnClick(); });
-        _exitButton.RegisterCallback<ClickEvent>(e => Application.Quit());
+        _startButton.RegisterCallback<ClickEvent>(e => { e.StopPropagation(); UIManager.Instance.GameStart(); });
+        _soundButton.RegisterCallback<ClickEvent>(e => { e.StopPropagation(); SoundBtnClick(); });
+        _exitButton.RegisterCallback<ClickEvent>(e => { e.StopPropagation(); Application.Quit(); });
     }
 
     private void SoundBtnClick()
