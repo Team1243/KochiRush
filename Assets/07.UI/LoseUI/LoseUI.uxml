@@ -1,7 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Button display-tooltip-when-elided="true" name="Container" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); align-self: center; justify-content: space-between; align-items: center;">
-        <ui:Label tabindex="-1" text="YOU&#10;&lt;color=red&gt;LOSE" display-tooltip-when-elided="true" picking-mode="Ignore" name="LoseText" style="-unity-font-definition: url(&apos;project://database/Assets/99.Others/Font/ONE%20Mobile%20POP%20SDF.asset?fileID=11400000&amp;guid=4d67219f052de1c44b0c556559551ce0&amp;type=2#ONE Mobile POP SDF&apos;); font-size: 300%; margin-top: 10%; color: rgb(0, 0, 0);" />
-        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
-        <ui:Label tabindex="-1" text="Touch To ReStart" display-tooltip-when-elided="true" name="TouchToReStart" picking-mode="Ignore" style="font-size: 75%; -unity-font-definition: url(&apos;project://database/Assets/99.Others/Font/ONE%20Mobile%20POP%20SDF.asset?fileID=11400000&amp;guid=4d67219f052de1c44b0c556559551ce0&amp;type=2#ONE Mobile POP SDF&apos;); margin-top: 5%; color: rgb(0, 0, 0);" />
+    <ui:Button display-tooltip-when-elided="true" name="Container" style="flex-grow: 1; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.2); align-self: center; align-items: center;">
+        <ui:VisualElement name="ScoreTextField" style="background-color: rgba(0, 0, 0, 0); width: 100%; height: 45%;" />
+        <ui:VisualElement name="Admob" style="background-color: rgba(0, 0, 0, 0); width: 100%; height: 45%;" />
+        <ui:VisualElement name="RestartTextField" style="background-color: rgba(0, 0, 0, 0); align-items: center; width: 100%; flex-grow: 1; flex-direction: column-reverse;">
+            <ui:Label tabindex="-1" text="Touch To ReStart" display-tooltip-when-elided="true" style="font-size: 100%; -unity-font-definition: url(&apos;project://database/Assets/99.Others/Font/ONE%20Mobile%20POP%20SDF.asset?fileID=11400000&amp;guid=4d67219f052de1c44b0c556559551ce0&amp;type=2#ONE Mobile POP SDF&apos;);" />
+        </ui:VisualElement>
     </ui:Button>
 </ui:UXML>
