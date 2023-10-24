@@ -1,4 +1,4 @@
-/*using System.Net.NetworkInformation;
+using System.Net.NetworkInformation;
 using GoogleMobileAds.Api;
 using UnityEngine;
 using System;
@@ -8,7 +8,7 @@ public class RewardedAdManager : MonoBehaviour
     public static RewardedAdManager Instance = null;
 
     private RewardedAd rewardedAd;
-    
+
     public Action onUserEarnedRewardAction; // 보상형 광고 실행 후 광고창을 닫았을 때 실행
 
     private readonly string rewardAdID = "ca-app-pub-~~~~~~~~~~~~~~~~~~~~"; // 보상형 광고 ID
@@ -76,7 +76,7 @@ public class RewardedAdManager : MonoBehaviour
     private void HandleAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
         Debug.Log("ad loading is failure");
-        
+
         if (IsNetworkAvailable())
         {
             Debug.Log("network is connect");
@@ -93,4 +93,3 @@ public class RewardedAdManager : MonoBehaviour
         return NetworkInterface.GetIsNetworkAvailable();
     }
 }
-*/
