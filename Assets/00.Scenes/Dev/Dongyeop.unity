@@ -1361,6 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd86c5e8e6400f4ab9c14d4f74f48d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _admobButtonEnableTime: 5
 --- !u!114 &1577231211 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1608513294365379496, guid: 595f89c51fe70ce4cbdc237018025c8f, type: 3}

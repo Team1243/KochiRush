@@ -22,7 +22,6 @@ public class InGameUI : MonoBehaviour
         {
             _score = value;
             _scoreLabel.text = _score.ToString();
-            print(_score.ToString());
         }
     }
 

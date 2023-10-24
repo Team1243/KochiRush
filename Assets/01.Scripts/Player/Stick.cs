@@ -14,6 +14,11 @@ public class Stick : MonoBehaviour
     [SerializeField] private AudioClip _fruitClip;
 
     [SerializeField] private InGameUI _inGameUI;
+    private int _currentScore;
+    public int CurrentScore
+    {
+        get => _currentScore;
+    }
 
     private void Awake()
     {
@@ -54,6 +59,7 @@ public class Stick : MonoBehaviour
                 fruit.transform.parent = fruitBasketTr.transform;
                 fruit.transform.localPosition = pos;
                 fruit.transform.localRotation = Quaternion.Euler(dir);
+                fruit.FruitRenderer.sortingLayerName = "Stick";
 
                 // 여기서 과일 꽂히는 사운드 재생
                 AudioObj audioObj = PoolManager.Instance.Pop("AudioObj") as AudioObj;
@@ -89,6 +95,7 @@ public class Stick : MonoBehaviour
             UIManager.Instance.GameEnd();
         }
         _inGameUI.Score += fruitList.Count * 5;
+        _currentScore = _inGameUI.Score;
         
         RemoveFruitList();
     }

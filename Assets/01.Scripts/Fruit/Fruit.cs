@@ -21,8 +21,8 @@ public class Fruit : PoolableMono
     [SerializeField] private List<Sprite> _sprites;
     [SerializeField] private List<Material> _materials;
     
+    public SpriteRenderer FruitRenderer;
     private Rigidbody2D _rigidbody;
-    private SpriteRenderer _spriteRenderer;
     private ParticleSystem _particle;
     private ParticleSystemRenderer _particleRenderer;
     private Vector2 _addForce;
@@ -30,7 +30,7 @@ public class Fruit : PoolableMono
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        FruitRenderer = GetComponent<SpriteRenderer>();
         _particle = transform.GetChild(0).GetComponent<ParticleSystem>();
         _particleRenderer = transform.GetChild(0).GetComponent<ParticleSystemRenderer>();
     }
@@ -39,13 +39,14 @@ public class Fruit : PoolableMono
     {
         IsCrash = false;
         _rigidbody.gravityScale = 1;
-        _spriteRenderer.color = Color.white;
+        FruitRenderer.color = Color.white;
         transform.position = new Vector3(Random.Range(_spawnMinX, _spawnMaxX), -7.5f, 0);
+        FruitRenderer.sortingLayerName = "Fruits";
 
         Type = (FruitType)Random.Range(0, Enum.GetValues(typeof(FruitType)).Length);
         if (Type == FruitType.Rock)
             Type = (FruitType)Random.Range(3, Enum.GetValues(typeof(FruitType)).Length);
-        _spriteRenderer.sprite = _sprites[(int)Type];
+        FruitRenderer.sprite = _sprites[(int)Type];
         _particleRenderer.material = _materials[(int)Type];
         
         _addForce.x = Random.Range(_addForceMin.x, _addForceMax.x);
@@ -82,17 +83,17 @@ public class Fruit : PoolableMono
     private IEnumerator FadeAndDestroy(Color color, float time)
     {
         float currentTime = 0;
-        Color startColor = _spriteRenderer.color;
+        Color startColor = FruitRenderer.color;
         while (currentTime < time)
         {
             yield return null;
             currentTime += Time.deltaTime;
             Mathf.Clamp(currentTime, 0, time);
             float t = currentTime / time;
-            _spriteRenderer.color = Color.Lerp(startColor, color, t);
+            FruitRenderer.color = Color.Lerp(startColor, color, t);
         }
 
-        _spriteRenderer.color = color;
+        FruitRenderer.color = color;
 
         PoolManager.Instance.Push(this);
         this.transform.parent = GameManager.Instance.transform;
