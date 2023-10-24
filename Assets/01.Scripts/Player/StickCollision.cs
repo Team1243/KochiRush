@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class StickCollision : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class StickCollision : MonoBehaviour
     private BoxCollider2D fruitBasketCol;
 
     private List<Fruit> fruitListTemp = new List<Fruit>(5);
+
+    public bool isChecking = false;
 
     private void Awake()
     {
@@ -33,12 +36,13 @@ public class StickCollision : MonoBehaviour
 
     private void ActivateRay()
     {
+        isChecking = true;
         StartCoroutine(CheckCollisionObj());
     }
 
     private  void DeactivateRay()
     {
-        StopCoroutine(CheckCollisionObj());
+        isChecking = false;
         _stick.SetFruitList(fruitListTemp);
     }
 
@@ -47,7 +51,7 @@ public class StickCollision : MonoBehaviour
         RaycastHit2D[] hits;
         fruitListTemp.Clear();
 
-        while (true)
+        while (isChecking)
         {
             hits = Physics2D.BoxCastAll(transform.position, fruitBasketCol.size, 0f, fruitBasketTr.up, 0f, whatIsFruit);
             
