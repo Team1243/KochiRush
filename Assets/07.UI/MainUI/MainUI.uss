@@ -1,8 +1,8 @@
 .button {
-    width: 250px;
-    height: 250px;
-    margin-left: 0;
-    margin-right: 0;
+    width: 400px;
+    height: 400px;
+    margin-left: 7.5%;
+    margin-right: 7.5%;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
@@ -17,4 +17,44 @@
     border-right-width: 0;
     border-top-width: 0;
     border-bottom-width: 0;
+}
+
+.pausePanel {
+    transition-duration: 0.3s;
+}
+
+.pausePanel.show {
+    background-color: rgba(0, 0, 0, 0.88);
+}
+
+.buttonContainer {
+    background-color: rgba(0, 0, 0, 0);
+    height: 30%;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    right: 100%;
+    transition-duration: 0.3s;
+}
+
+.buttonContainer.show {
+    right: 0;
+}
+
+.hand {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 50%;
+    width: 12.5%;
+    height: 12.5%;
+    background-image: url('project://database/Assets/02.Sprites/UI/Hand.png?fileID=21300000&guid=53ce8975b56178b4b82028b83c722138&type=3#Hand');
+    -unity-background-scale-mode: scale-to-fit;
+    rotate: -25deg;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-cubic;
+}
+
+.hand.small {
+    width: 10%;
+    height: 10%;
 }
