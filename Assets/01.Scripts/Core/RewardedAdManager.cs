@@ -28,10 +28,10 @@ public class RewardedAdManager : MonoBehaviour
 
     private void Start()
     {
-        if (IsNetworkAvailable())
+        /*if (IsNetworkAvailable())
         {
             Debug.Log(IsNetworkAvailable());
-        }
+        }*/
 
         onUserEarnedRewardAction += () => Debug.Log("Player successfull watching");
 
@@ -77,19 +77,19 @@ public class RewardedAdManager : MonoBehaviour
     {
         Debug.Log("ad loading is failure");
 
-        if (IsNetworkAvailable())
+        /*if (IsNetworkAvailable())
         {
             Debug.Log("network is connect");
         }
         else
         {
             Debug.Log("network is not connect");
-        }
+        }*/
     }
 
     // 나중에 게임 매니저 시스템쪽으로 빼야 할 거 같음
-    private bool IsNetworkAvailable()
+    /*private bool IsNetworkAvailable()
     {
         return NetworkInterface.GetIsNetworkAvailable();
-    }
+    }*/
 }

@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UnityEvent _gameStart;
     [SerializeField] private UnityEvent _gameEnd;
     [SerializeField] private UnityEvent _gameRestart;
+    [SerializeField] private UnityEvent _gameContinue;
     
     [HideInInspector] public bool IsShow = true;
      
@@ -19,6 +20,11 @@ public class UIManager : MonoBehaviour
         if (Instance != null)
             Debug.LogError("Multiple UIManager is running");
         Instance = this;
+    }
+
+    private void Start()
+    {
+        RewardedAdManager.Instance.onUserEarnedRewardAction += GameContinue;
     }
 
     public void GameStart()
@@ -37,5 +43,11 @@ public class UIManager : MonoBehaviour
     {
         _gameRestart.Invoke();
         IsShow = true;
+    }
+
+    public void GameContinue()
+    {
+        _gameContinue?.Invoke();
+        IsShow = false;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class LosetUI : MonoBehaviour
@@ -38,8 +39,10 @@ public class LosetUI : MonoBehaviour
         _admobButton.RegisterCallback<ClickEvent>(e =>
         {
             e.StopPropagation();
-            //±¤°í ½ÇÇà
-            Debug.Log("Admob Show");
+
+            // ±¤°í Àç»ý
+            SceneManager.LoadScene(0);
+            RewardedAdManager.Instance.ShowAd();
         });
         _scoreLabel.text = _stick.CurrentScore.ToString();
         
