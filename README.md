@@ -14,4 +14,5 @@
 
 # 참고자료 (링크)
 - [플레이 영상] (https://youtu.be/Arp7vOG35-g)
+- [게임 다운로드 링크] (https://play.google.com/store/apps/details?id=com.Team1243.KochiRush&hl=ko)
  
